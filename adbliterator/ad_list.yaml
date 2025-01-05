@@ -1,0 +1,123 @@
+---
+## Welcome to the Adblitorator config file™
+# This file contains lists of sites, paths, files and more for Adblitorator
+# If you see a line marked 'RISKY', that means it could break sites.
+# If you want to enable it, remove the '#'
+# nearest to the '-' to uncomment the option.
+# This file is written in YAML, to learn more about YAML,
+# visit: https://learnxinyminutes.com/yaml/
+##
+
+### +-+-+-+-+-+-+-+ KEYWORDS +-+-+-+-+-+-+-+ ###
+# Keywords related to advertisements or tracking mechanisms,
+# used to identify ads for filtering or blocking purposes.
+AD_KEYWORDS:
+  - doubleclick
+  - googlesyndication
+  - tracking
+  - metrics
+  - errorcatcher
+  - whitematchmarketing
+  - bannerads
+  - clicktrack
+  - promotions
+  - sponsored
+  - campaignmonitor
+  - carouselads
+  - adsgold
+  - youtube.com/ads
+  - youtube.com/get_midroll_info
+  - youtube.com/api/stats/ads
+  - adserver
+  - advertisement
+  - advertising
+  # - ads
+  # - adservice # RISKY
+  # - admanager # RISKY
+  # - analytics # RISKY
+
+### +-+-+-+-+-+-+-+ HOSTNAMES +-+-+-+-+-+-+-+ ###
+# List of hostnames that are associated with tracking, analytics,
+# or advertisements, typically used for blocking or monitoring requests.
+KNOWN_HOSTS:
+  - google-analytics.com
+  - an.yandex.ru
+  - www.googletagmanager.com
+  - script.hotjar.com
+  - static.hotjar.com
+  - js.sentry-cdn.com
+  - mc.yandex.ru
+  - mc.yandex.com
+  - browser.sentry-cdn.com
+  - yastatic.net
+  - sessions.bugsnag.com
+  - ads.yahoo.com
+  - analytics.facebook.com
+  - cdn.taboola.com
+  - cdn.optimizely.com
+  - ads.linkedin.com
+  - tpc.googlesyndication.com
+  - ads.pinterest.com
+  - track.adform.net
+  - encrypted-tbn0.gstatic.com
+  - encrypted-tbn1.gstatic.com
+  - encrypted-tbn2.gstatic.com
+  - encrypted-tbn3.gstatic.com
+  - encrypted-tbn4.gstatic.com
+  - id.google.com
+  - ads.youtube.com
+  - pagead2.googlesyndication.com
+  - googleads.g.doubleclick.net
+  - youtubei.googleapis.com
+  - ymatuhin.ru
+  - bat.bing.com
+  - ads.microsoft.com
+  - browser.pipe.aria.microsoft.com
+  - adsuxprodfd-awb5gsddabddbqgv.z01.azurefd.net
+  - resources-bingadsms.azureedge.net
+
+### +-+-+-+-+-+-+-+ URL PATHS +-+-+-+-+-+-+-+ ###
+# Common URL paths or files loaded by websites to deliver ads,
+# perform tracking, or gather analytics.
+KNOWN_PATHS:
+  - /analytics.js
+  - /gtag.js
+  - /tag.js
+  - /banners
+  - /v4/bugsnag.min.js
+  - /googleads.js
+  - /ads.min.js
+  - /metrika
+  - /pr
+  - /tracking.js
+  - /ad_impressions
+  - /pixel.gif
+  - /conversion.js
+  - /events.js
+  - /get_midroll_info
+  - /_/mss/boq-search
+  - /gen
+  - /pagead
+  - /tr
+  - /fbevents.js
+  - /privacy_sandbox
+  - /p/insights
+  - /Collector/3.0
+  - /external
+  # - .gif # RISKY
+  # - .png # RISKY
+
+### +-+-+-+-+-+-+-+ FLASH EXTENSIONS +-+-+-+-+-+-+-+ ###
+# File extensions specific to Adobe Flash content,
+# often containing ads or interactive media.
+FLASH_EXTENSIONS:
+  - .swf
+
+### +-+-+-+-+-+-+-+ FLASH MIME TYPES +-+-+-+-+-+-+-+ ###
+# MIME types for Adobe Flash, used to identify content
+# types for filtering or blocking purposes.
+FLASH_MIME_TYPES:
+  - application/x-shockwave-flash
+
+### +-+-+-+-+-+-+-+ END CONFIG +-+-+-+-+-+-+-+ ###
+...

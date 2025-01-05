@@ -1,0 +1,22 @@
+---
+## Welcome to the Adblitorator config file™
+# This file contains settings for Adblitorator.
+# This file is written in YAML, to learn more about YAML,
+# visit: https://learnxinyminutes.com/yaml/
+##
+
+### +-+-+-+-+-+-+-+ SETTINGS +-+-+-+-+-+-+-+ ###
+SETTINGS:
+  # 'debug' will log everything, *can* reduce performance but
+  # will show requests being blocked in realtime
+  # and will help figure out issues if you are having any
+  debug: false
+  
+  # 'dns' settings can be complex, this chooses what resolves the domains
+  # you visit. If you don't understand, we by default use 
+  # Cloudflare for primary and backup, they are the fastest and
+  # work well, you could also use Google DNS or other providers.
+  dns:
+    primary: "1.1.1.1"
+    secondary: "1.0.0.1"
+...
