@@ -16,7 +16,7 @@ public abstract class Server {
 
         var upstreamDns = Config.Settings?.Dns.Primary;
 
-        using var udpClient = new UdpClient(dnsPort);
+        using var udpClient = new UdpClient(new IPEndPoint(IPAddress.Any, dnsPort));
         using var forwardClient = new UdpClient();
 
         Logger.Info($"DNS Proxy server is now listening :{dnsPort}...");
