@@ -14,6 +14,7 @@ public abstract class Logger {
 
     private static string GetPrefix(string logKind) {
         return logKind.ToLower() switch {
+            "adbliterator" => Colorize("[ ", "gray") + Colorize("Adbliterator", "magenta") + Colorize(" ] ", "gray"),
             "info" => Colorize("[ ", "gray") + Colorize("INFO", "blue") + Colorize(" ] ", "gray"),
             "warning" => Colorize("[ ", "gray") + Colorize("WARN", "yellow") + Colorize(" ] ", "gray"),
             "error" => Colorize("[ ", "gray") + Colorize("ERROR", "red") + Colorize(" ] ", "gray"),
@@ -24,11 +25,35 @@ public abstract class Logger {
         };
     }
 
-    public static void Section(string sectionName) => Console.WriteLine($"+-+-+- {sectionName} -+-+-+");
-    public static void Log(string text) => Console.WriteLine(GetPrefix("info") + text);
-    public static void Warn(string warning) => Console.WriteLine(GetPrefix("warning") + warning);
-    public static void Error(string error) => Console.WriteLine(GetPrefix("error") + error);
-    public static void Blocked(string address) => Console.WriteLine(GetPrefix("blocked") + address);
-    public static void Allowed(string address) => Console.WriteLine(GetPrefix("allowed") + address);
-    public static void Screening(string address) => Console.WriteLine(GetPrefix("screening") + address);
+    public static void Log(string text) {
+        Console.WriteLine(GetPrefix("adbliterator") + text);
+    }
+    
+    public static void Section(string sectionName) {
+        Console.WriteLine($"+-+-+- {sectionName} -+-+-+");
+    }
+
+    public static void Info(string text) {
+        Console.WriteLine(GetPrefix("info") + text);
+    }
+
+    public static void Warn(string warning) {
+        Console.WriteLine(GetPrefix("warning") + warning);
+    }
+
+    public static void Error(string error) {
+        Console.WriteLine(GetPrefix("error") + error);
+    }
+
+    public static void Blocked(string address) {
+        Console.WriteLine(GetPrefix("blocked") + address);
+    }
+
+    public static void Allowed(string address) {
+        Console.WriteLine(GetPrefix("allowed") + address);
+    }
+
+    public static void Screening(string address) {
+        Console.WriteLine(GetPrefix("screening") + address);
+    }
 }

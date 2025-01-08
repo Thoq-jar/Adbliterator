@@ -1,11 +1,12 @@
-﻿using Adbliterator.utilities.misc;
+﻿using Adbliterator.utilities.config;
+using Adbliterator.utilities.misc;
 
 namespace Adbliterator;
 
 internal static class Program {
     public static void Main(string[] args) {
-        Logger.Log("Starting Adbliterator...");
-        
+        Logger.Info("Starting Adbliterator...");
+
         var configDir = ".";
 
         for (var i = 0; i < args.Length; i++) {
@@ -21,11 +22,14 @@ internal static class Program {
         }
 
         try {
-            utilities.config.Config.Load(configDir);
+            Config.Load(configDir);
             Server.Start();
         }
         catch (Exception ex) {
             Logger.Error($"Failed to start proxy. {ex.Message}");
+            if (ex.Message == "Permission denied") {
+                Logger.Log("Is the address already in use?");
+            }
         }
     }
 }

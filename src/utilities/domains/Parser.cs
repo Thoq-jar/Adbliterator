@@ -12,9 +12,7 @@ public class Parser {
 
             if (segmentLength == 0) break;
 
-            if (position + segmentLength > requestData.Length) {
-                throw new Exception("Invalid DNS request format.");
-            }
+            if (position + segmentLength > requestData.Length) throw new Exception("Invalid DNS request format.");
 
             var segment = Encoding.ASCII.GetString(requestData, position, segmentLength);
             position += segmentLength;

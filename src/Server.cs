@@ -1,8 +1,8 @@
+using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
-using Adbliterator.utilities.config;
-using System.Diagnostics;
 using Adbliterator.utilities.blocking;
+using Adbliterator.utilities.config;
 using Adbliterator.utilities.domains;
 using Adbliterator.utilities.misc;
 
@@ -10,16 +10,16 @@ namespace Adbliterator;
 
 public abstract class Server {
     public static void Start() {
-        const int dnsPort = 53;
+        var dnsPort = Config.Settings?.Port ?? 53;
 
-        Logger.Log("Starting Adbliterator DNS Server...");
+        Logger.Info("Starting Adbliterator DNS Server...");
 
         var upstreamDns = Config.Settings?.Dns.Primary;
 
         using var udpClient = new UdpClient(dnsPort);
         using var forwardClient = new UdpClient();
 
-        Logger.Log($"DNS Proxy server is now listening :{dnsPort}...");
+        Logger.Info($"DNS Proxy server is now listening :{dnsPort}...");
         var cts = new CancellationTokenSource();
 
         var stopWatch = new Stopwatch();
@@ -28,7 +28,7 @@ public abstract class Server {
         Console.CancelKeyPress += (_, e) => {
             if (!firstCancelPress) {
                 Console.WriteLine();
-                Logger.Log("Shutting down DNS Proxy (press Ctrl + C again to force quit)...");
+                Logger.Info("Shutting down DNS Proxy (press Ctrl + C again to force quit)...");
                 firstCancelPress = true;
                 stopWatch.Start();
                 cts.Cancel();
@@ -43,7 +43,7 @@ public abstract class Server {
                 }
                 else {
                     Console.WriteLine();
-                    Logger.Log("Restarting shutdown timer. Press Ctrl + C again to force exit.");
+                    Logger.Info("Restarting shutdown timer. Press Ctrl + C again to force exit.");
                     stopWatch.Restart();
                     firstCancelPress = true;
                     cts.Cancel();
@@ -65,7 +65,7 @@ public abstract class Server {
                     continue;
                 }
 
-                Logger.Log($"Requesting resolution for: {domainName}");
+                Logger.Info($"Requesting resolution for: {domainName}");
 
                 try {
                     if (upstreamDns != null) {
@@ -77,7 +77,7 @@ public abstract class Server {
                     var resolvedData = forwardClient.Receive(ref upstreamResponseEndpoint);
 
                     udpClient.Send(resolvedData, resolvedData.Length, remoteEndpoint);
-                    Logger.Log($"Resolved domain: {domainName}");
+                    Logger.Info($"Resolved domain: {domainName}");
                 }
                 catch (Exception ex) {
                     Logger.Error($"Upstream DNS resolution error: {ex.Message}");
@@ -85,7 +85,7 @@ public abstract class Server {
             }
         }
         finally {
-            Logger.Log("DNS Proxy has stopped.");
+            Logger.Info("DNS Proxy has stopped.");
         }
     }
 }

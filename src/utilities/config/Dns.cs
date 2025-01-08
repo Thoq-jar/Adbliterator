@@ -1,4 +1,5 @@
 // ReSharper disable UnusedMember.Global
+
 namespace Adbliterator.utilities.config;
 
 public class DnsConfig {

@@ -2,6 +2,7 @@
 // ReSharper disable CollectionNeverUpdated.Global
 // Resharper disable ClassNeverInstantiated.Global
 // Resharper disable AutoPropertyCanBeMadeGetOnly.Global
+
 using YamlDotNet.Serialization;
 
 namespace Adbliterator.utilities.config;

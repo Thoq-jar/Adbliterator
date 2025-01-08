@@ -8,9 +8,7 @@ public class CheckStatus {
     public static bool IsBlocked(string domainName) {
         Console.WriteLine();
         Logger.Section(domainName);
-        if (domainName.EndsWith(".lan", StringComparison.OrdinalIgnoreCase)) {
-            domainName = domainName[..^4];
-        }
+        if (domainName.EndsWith(".lan", StringComparison.OrdinalIgnoreCase)) domainName = domainName[..^4];
 
         Logger.Screening(domainName);
 
